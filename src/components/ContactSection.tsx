@@ -37,7 +37,7 @@ const ContactSection = () => {
       icon: "{}",
       title: "GitHub",
       description: "Explore my code and projects",
-      url: "https://github.com/",
+      url: "https://github.com/Emmy-coded",
     },
   ];
 
