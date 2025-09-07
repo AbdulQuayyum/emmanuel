@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Emmanuel's Portfolio Design System - Minimalist Data Science Theme */
+
+@layer base {
+  :root {
+    /* Monochromatic color palette - Deep Blues for data/tech sophistication */
+    --background: 220 25% 5%;
+    --foreground: 220 15% 95%;
+    
+    /* Surface variations */
+    --surface: 220 20% 8%;
+    --surface-elevated: 220 18% 12%;
+    --surface-subtle: 220 22% 6%;
+    
+    /* Accent and highlights */
+    --primary: 220 30% 25%;
+    --primary-foreground: 220 15% 95%;
+    --accent: 220 25% 15%;
+    --accent-foreground: 220 15% 85%;
+    
+    /* Interactive elements */
+    --muted: 220 18% 20%;
+    --muted-foreground: 220 10% 70%;
+    --border: 220 20% 15%;
+    --ring: 220 30% 35%;
+    
+    /* Cards and surfaces */
+    --card: 220 20% 8%;
+    --card-foreground: 220 15% 95%;
+    --popover: 220 20% 8%;
+    --popover-foreground: 220 15% 95%;
+    
+    /* Input and form elements */
+    --input: 220 20% 15%;
+    --secondary: 220 18% 20%;
+    --secondary-foreground: 220 15% 85%;
+    
+    /* Destructive elements */
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 220 15% 95%;
+    
+    /* Border radius */
+    --radius: 0.5rem;
+    
+    /* Animation variables */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  /* Typography setup */
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* Code and monospace text */
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  /* Custom animation keyframes */
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: hsl(var(--foreground)); }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-20px) rotate(5deg); }
+    66% { transform: translateY(10px) rotate(-5deg); }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    }
+    50% { 
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+    }
+  }
+
+  /* Animation classes */
+  .animate-typewriter {
+    animation: typewriter 2s steps(40, end), blink 1s step-end infinite;
+    border-right: 2px solid hsl(var(--foreground));
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  /* Geometric data shapes */
+  .data-point {
+    @apply w-2 h-2 bg-primary/40 rounded-full absolute;
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  .data-point:nth-child(2) { animation-delay: -1s; }
+  .data-point:nth-child(3) { animation-delay: -2s; }
+  .data-point:nth-child(4) { animation-delay: -3s; }
+
+  /* Hover effects */
+  .hover-lift {
+    transition: var(--transition-spring);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-5px);
+  }
+
+  /* Scroll reveal animations */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition-smooth);
+  }
+  
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
